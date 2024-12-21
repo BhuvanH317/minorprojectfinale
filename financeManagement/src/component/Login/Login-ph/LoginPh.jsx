@@ -50,7 +50,7 @@ function LoginPh() {
           </div>
           <div className="flex items-center mb-4">
             <label className="text-blue-950" htmlFor="terms">
-              Log In using Email {" "}<a href="login-email" className='text-blue-500 hover:underline'>{"  "}click here</a>{/* use link tag here */}
+              Log In using Email {" "}<Link to="/" className='text-blue-500 hover:underline'>{"  "}click here</Link>{/* use link tag here */}
             </label>
           </div>
           <div className="flex justify-center">

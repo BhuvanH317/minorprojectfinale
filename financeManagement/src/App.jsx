@@ -2,14 +2,15 @@ import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Header from './component/Header/Header';
-import Dashboard from './component/Dashboard/Dashboard';
+import Setgoal from './component/Setgoal/Setgoal';
 import Transaction from './component/Transaction/Transaction';
 import Layout from './Layout';
 import LoginEm from './component/Login/Login-email/LoginEm';
 import LoginPh from './component/Login/Login-ph/LoginPh';
 import SignUp from './component/signup/SignUp';
 import Home from './component/Home/Home';
-import BudgetandSaving from './component/BudgetandSaving/BudgetandSaving';
+import BudgetandSaving from './component/Budget/BudgetandSaving';
+import Profile from './component/Profile/Profile';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,18 +19,16 @@ function App() {
     <Router>
       <div className="flex-grow p-4">
         <Routes>
-          {/* Authentication Routes */}
-          <Route path="/login-email" element={<LoginEm />} />
-          <Route path="/login-phone" element={<LoginPh />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path='/' index element={<LoginEm />} />
+          <Route path="login-phone" element={<LoginPh />} />
+          <Route path="signup" element={<SignUp />} />
 
-          {/* Main Application Routes */}
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} /> {/* Default child route for "/" */}
+          <Route element={<Layout />}> 
             <Route path="home" element={<Home />} />
-            <Route path="budgetandsaving" element={<BudgetandSaving />} />
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="budget" element={<BudgetandSaving />} />
+            <Route path="setgoal" element={<Setgoal />} />
             <Route path="transaction" element={<Transaction />} />
+            <Route path="profile" element={<Profile/>}/>
           </Route>
         </Routes>
       </div>

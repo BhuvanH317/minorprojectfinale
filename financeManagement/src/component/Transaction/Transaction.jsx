@@ -1,14 +1,14 @@
 import React, { useState } from "react";
+import Chart from "react-apexcharts";
 
-const App = () => {
+const Transaction = () => {
   // State for transactions
   const [transactions, setTransactions] = useState([]);
   const [filter, setFilter] = useState({ category: "", method: "" });
-
-  // State for the form
+ 
   const [form, setForm] = useState({ date: "", category: "", amount: "", method: "", notes: "" });
 
-  // Add new transaction
+
   const addTransaction = (e) => {
     e.preventDefault();
     if (!form.date || !form.amount || !form.category || !form.method) {
@@ -17,13 +17,14 @@ const App = () => {
     setTransactions([...transactions, { ...form, id: Date.now() }]);
     setForm({ date: "", category: "", amount: "", method: "", notes: "" });
   };
+ 
 
-  // Delete transaction
+  
   const deleteTransaction = (id) => {
     setTransactions(transactions.filter((t) => t.id !== id));
   };
 
-  // Filter logic
+  
   const today = new Date();
   const filteredTransactions = transactions.filter((t) => {
     const matchesCategory = filter.category ? t.category === filter.category : true;
@@ -36,7 +37,7 @@ const App = () => {
     return transactionDate > today;
   });
 
-  // Calculate summaries
+
   const calculateSummary = (transactionList) => {
     const income = transactionList
       .filter((t) => t.amount > 0)
@@ -51,11 +52,13 @@ const App = () => {
   
 
   const currentSummary = calculateSummary(filteredTransactions);
-  const futureSummary = calculateSummary(futureTransactions);
+  const futureSummary = calculateSummary(futureTransactions); 
+
+ 
 
   return (
     <div className="min-h-screen bg-gray-100 p-5">
-      <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
+      <div className="w-3/4 mx-auto bg-white shadow-md rounded-lg p-6">
         <h1 className="text-2xl font-bold mb-4">Transaction Page</h1>
 
         {/* Summary */}
@@ -71,7 +74,6 @@ const App = () => {
           </div>
         </div>
 
-        {/* Filters */}
         <div className="mb-4">
           <h2 className="text-lg font-semibold">Filters</h2>
           <div className="flex gap-4 mt-2">
@@ -92,7 +94,6 @@ const App = () => {
           </div>
         </div>
 
-        {/* Add Transaction */}
         <form onSubmit={addTransaction} className="mb-4">
           <h2 className="text-lg font-semibold">Add Transaction</h2>
           <div className="grid grid-cols-2 gap-4 mt-2">
@@ -138,7 +139,7 @@ const App = () => {
           </button>
         </form>
 
-        {/* Transaction Lists */}
+        
         <h2 className="text-lg font-semibold mb-2">Transactions</h2>
         <TransactionTable transactions={filteredTransactions} deleteTransaction={deleteTransaction} />
 
@@ -182,7 +183,8 @@ const TransactionTable = ({ transactions, deleteTransaction }) => (
         ))}
       </tbody>
     </table>
+    
   </div>
 );
 
-export default App;
+export default Transaction;

@@ -70,6 +70,7 @@ function SignUp() {
             <button
               className="bg-blue-950 hover:bg-blue-800 border-blue-950 text-white font-semibold px-6 py-2 rounded-3xl"
               type="submit"
+              onClick={handleSubmit}
             >
               Sign Up
             </button>
@@ -77,7 +78,7 @@ function SignUp() {
         </form>
         <p className="text-blue-950 text-center mt-4">
           Already have an account?{" "}
-          <Link to="/login-email" className="text-blue-500 hover:underline">
+          <Link to="/" className="text-blue-500 hover:underline">
             Login
           </Link>{/* use link tag here */}
         </p>

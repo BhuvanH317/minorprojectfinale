@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../Header/LOGO.png'; 
 import { Link,NavLink } from 'react-router-dom';
+import proPhoto from '../Header/profile.jpeg'
 
 const Header = () => {
     return (
@@ -29,12 +30,12 @@ const Header = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/dashboard"
+                            <NavLink to="/setgoal"
                                 className={({isActive}) =>
                                     `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-blue-950" : "text-gray-700"}border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-blue-950 lg:p-0`
                                 }
                             >
-                                Dashboard
+                                Set Goal
                             </NavLink>
                         </li>
                         <li>
@@ -47,16 +48,20 @@ const Header = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/budgetandsaving"
+                            <NavLink to="/budget"
                                 className={({isActive}) =>
                                     `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-blue-950" : "text-gray-700"}border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-blue-950 lg:p-0`
                                 }
                             >
-                                Budget and Saving
+                                Budget
                             </NavLink>
                         </li>
                         
                     </ul>
+                </div>
+                <div className='hidden justify-between items-center w- lg:flex lg:w-auto lg:order-2'>
+                    
+                    <NavLink to="/profile"><img src={proPhoto} alt="profilephoto" className='mr-3 h-12 rounded-3xl'/></NavLink>
                 </div>
             </div>
         </nav>
