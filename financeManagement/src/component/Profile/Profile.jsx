@@ -30,10 +30,17 @@ function Profile() {
     setSubmitted(true); // Mark form as submitted
   };
 
+  // Handler to go back to edit mode
+  const handleEdit = () => {
+    setSubmitted(false); // Switch back to form view
+  };
+
   return (
     <div className="h-full bg-gray-100 p-5">
       <div className="w-1/2 bg-white shadow-md h-full mx-auto rounded-lg">
-        <h2 className="text-center text-2xl mt-8 font-bold">User Information Form</h2>
+        <h2 className="text-center text-2xl mt-8 font-bold">
+          {submitted ? "User Details" : "User Information Form"}
+        </h2>
 
         {!submitted ? (
           <form onSubmit={handleSubmit} className="p-6">
@@ -156,6 +163,12 @@ function Profile() {
             <p className="text-lg mt-2">
               <strong>Savings:</strong> {formData.savings || "N/A"}
             </p>
+            <button
+              onClick={handleEdit}
+              className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded w-full py-2"
+            >
+              Edit Details
+            </button>
           </div>
         )}
       </div>
